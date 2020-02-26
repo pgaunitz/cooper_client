@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-escribe("User can log in", () => {
+describe("User can log in", () => {
   beforeEach(() => {
     cy.server();
     cy.visit("/");
