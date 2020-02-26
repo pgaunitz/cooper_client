@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import DisplayCooperResult from "./components/DisplayCooperResult";
-import InputFields from './components/InputFields';
+import InputFields from "./components/InputFields";
 import LoginForm from "./components/LoginForm";
-import { authenticate } from './Modules/auth';
+import { authenticate } from "./Modules/auth";
 
 class App extends Component {
   state = {
@@ -18,18 +18,32 @@ class App extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   render() {
-    const renderLogin = this.state.renderLoginForm ? (
-      <LoginForm submitFormHandler={this.onLogin} />
-    ) : (
-      <button
-        id="login"
-        onClick={() => this.setState({ renderLoginForm: true })}
-      >
-        Login
-      </button>
-    );
+    const { renderLoginForm, authenticated, message } = this.state;
+    let renderLogin;
+    switch (true) {
+      case renderLoginForm && !authenticated:
+        renderLogin = <LoginForm submitFormHandler={this.onLogin} />;
+        break;
+      case !renderLoginForm && !authenticated:
+        renderLogin = (
+          <>
+            <button
+              id="login"
+              onClick={() => this.setState({ renderLoginForm: true })}
+            >
+              Login
+            </button>
+            <p>{message}</p>
+          </>
+        );
+        break;
+      case authenticated:
+        renderLogin = (
+          <p>Hi {JSON.parse(sessionStorage.getItem("credentials")).uid}</p>
+        );
+        break;
+    }
 
-  
     return (
       <>
         <InputFields onChangeHandler={this.onChangeHandler} />
