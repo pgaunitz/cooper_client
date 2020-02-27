@@ -4,6 +4,8 @@ import InputFields from "./components/InputFields";
 import LoginForm from "./components/LoginForm";
 import { authenticate } from "./modules/auth";
 import DisplayPerformanceData from "./components/DisplayPerformanceData";
+import { grommet, Grommet, Box, Button } from 'grommet';
+
 
 class App extends Component {
   state = {
@@ -30,13 +32,15 @@ class App extends Component {
       case !renderLoginForm && !authenticated:
         renderLogin = (
           <>
-            <button
-              id="login"
-              onClick={() => this.setState({ renderLoginForm: true })}
-            >
-              Login
-            </button>
-            <p id="message">{message}</p>
+            <Grommet theme={grommet}>
+              <Box align="center" pad="medium">
+                <Button 
+                label="Login" 
+                id="login" 
+                onClick={() => this.setState({ renderLoginForm: true })} />
+              </Box>
+            </Grommet>
+              <p id="message">{message}</p>
           </>
         );
         break;
@@ -68,8 +72,10 @@ class App extends Component {
     }
 
     return (
+    
       <>
-        <InputFields onChangeHandler={this.onChangeHandler} />
+      <Grommet className="App">
+      <InputFields onChangeHandler={this.onChangeHandler} />
         {renderLogin}
         <DisplayCooperResult
           distance={this.state.distance}
@@ -80,6 +86,8 @@ class App extends Component {
           entryHandler={() => this.setState({ entrySaved: true, updateIndex: true })}
         />
         {performanceDataIndex}
+      </Grommet>
+        
       </>
     );
   }
