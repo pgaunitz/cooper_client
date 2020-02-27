@@ -50,7 +50,7 @@ class App extends Component {
         if (this.state.renderIndex) {
           performanceDataIndex = (
             <>
-              <DisplayPerformanceData
+              <DisplayPerformanceData 
                 updateIndex={this.state.updateIndex}
                 indexUpdated={() => this.setState({ updateIndex: false })}
               />
