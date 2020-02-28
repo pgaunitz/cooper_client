@@ -66,7 +66,11 @@ class App extends Component {
                 updateIndex={this.state.updateIndex}
                 indexUpdated={() => this.setState({ updateIndex: false })}
               />
-              <button onClick={() => this.setState({ renderIndex: false })}>Hide past entries</button>
+              <Grommet theme={grommet}>
+                <Box align="center">
+                  <Button onClick={() => this.setState({ renderIndex: false })}>Hide past entries</Button>
+                </Box>
+              </Grommet>
             </>
           )
         } else {
