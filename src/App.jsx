@@ -48,11 +48,17 @@ class App extends Component {
         break;
       case authenticated:
         renderLogin = (
-          <p id="message">Hi {JSON.parse(sessionStorage.getItem("credentials")).uid}</p>
+          <Grommet theme={grommet}>
+            <Box align="center" pad="medium" id="message">
+              Hi {JSON.parse(sessionStorage.getItem("credentials")).uid} you have successfully logged in. 
+            </Box>
+          </Grommet>
+          
         );
         performanceDataIndex = (
-          <button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</button>
-        );
+          <Grommet theme={grommet}>
+            <Button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</Button>
+          </Grommet>);
         if (this.state.renderIndex) {
           performanceDataIndex = (
             <>
@@ -65,8 +71,12 @@ class App extends Component {
           )
         } else {
           performanceDataIndex = (
-            <button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</button>
-          )
+            
+            <Grommet theme={grommet}>
+              <Box align="center">
+                <Button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</Button>
+              </Box>
+          </Grommet>);
         }
       
         break;
