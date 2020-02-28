@@ -39,8 +39,10 @@ class App extends Component {
                 id="login" 
                 onClick={() => this.setState({ renderLoginForm: true })} />
               </Box>
+              <Box align="center" pad="medium">
+                <p id="message">{message}</p>
+              </Box>
             </Grommet>
-              <p id="message">{message}</p>
           </>
         );
         break;

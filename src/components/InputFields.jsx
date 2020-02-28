@@ -18,3 +18,21 @@ const InputFields = ({ onChangeHandler }) => {
 };
 
 export default InputFields;
+
+
+
+
+{/* <Grommet full theme={grommet}>
+<Box fill align="center" justify="center">
+  <Box width="medium">
+    <Form>
+    <FormField onChange={onChangeHandler} id ="distance" name="distance" placeholder="Distance"></FormField>
+    <FormField htmlFor="select"> 
+      <Select onChange={onChangeHandler} htmlFor="select" options={'male', 'female'} name="gender" id="gender">
+      </Select>
+    </FormField>
+    <FormField onChange={onChangeHandler} id ="age" name="age" placeholder="Age"></FormField>
+    </Form>
+  </Box>
+</Box>
+</Grommet> */}

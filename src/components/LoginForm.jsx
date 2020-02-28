@@ -19,7 +19,7 @@ const LoginForm = ({ submitFormHandler }) => {
           </FormField>
 
           <Box direction="row" justify="between" margin={{ top: "medium" }}>
-            <Button label="Submit" id="submit" primary />
+            <Button type="submit" label="Submit" id="submit"/>
           </Box>
         </Form>
       </Box>
