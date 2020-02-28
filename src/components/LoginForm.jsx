@@ -1,17 +1,33 @@
 import React from "react";
 
+import { Box, Button, Grommet, Form, FormField, TextInput } from "grommet";
+import { grommet } from "grommet/themes";
+
 const LoginForm = ({ submitFormHandler }) => {
   return (
-    <form onSubmit={submitFormHandler} id="login-form">
-      <label>Email</label>
-      <input name="email" type="email" id="email"></input>
+    <Grommet full theme={grommet}>
+    <Box fill align="center" justify="center">
+      <Box width="medium">
+        <Form onSubmit={submitFormHandler} id ="login-form"
+        >
+          <FormField label="Email">
+            <TextInput name="email" type="email" id="email" />
+          </FormField>
 
-      <label>Password</label>
-      <input name="password" type="password" id="password"></input>
+          <FormField label="Password">
+            <TextInput name="password" type="password" id="password" />
+          </FormField>
 
-      <button id="submit">Submit</button>
-    </form>
+          <Box direction="row" justify="between" margin={{ top: "medium" }}>
+            <Button type="submit" label="Submit" id="submit"/>
+          </Box>
+        </Form>
+      </Box>
+    </Box>
+  </Grommet>
   );
 };
 
 export default LoginForm;
+
+

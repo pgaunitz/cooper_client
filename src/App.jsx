@@ -3,6 +3,9 @@ import DisplayCooperResult from "./components/DisplayCooperResult";
 import InputFields from "./components/InputFields";
 import LoginForm from "./components/LoginForm";
 import { authenticate } from "./modules/auth";
+import DisplayPerformanceData from "./components/DisplayPerformanceData";
+import { grommet, Grommet, Box, Button } from 'grommet';
+
 
 class App extends Component {
   state = {
@@ -21,6 +24,7 @@ class App extends Component {
   render() {
     const { renderLoginForm, authenticated, message } = this.state;
     let renderLogin;
+    let performanceDataIndex;
     switch (true) {
       case renderLoginForm && !authenticated:
         renderLogin = <LoginForm submitFormHandler={this.onLogin} />;
@@ -28,13 +32,17 @@ class App extends Component {
       case !renderLoginForm && !authenticated:
         renderLogin = (
           <>
-            <button
-              id="login"
-              onClick={() => this.setState({ renderLoginForm: true })}
-            >
-              Login
-            </button>
-            <p id="message">{message}</p>
+            <Grommet theme={grommet}>
+              <Box align="center" pad="medium">
+                <Button 
+                label="Login" 
+                id="login" 
+                onClick={() => this.setState({ renderLoginForm: true })} />
+              </Box>
+              <Box align="center" pad="medium">
+                <p id="message">{message}</p>
+              </Box>
+            </Grommet>
           </>
         );
         break;
@@ -42,12 +50,34 @@ class App extends Component {
         renderLogin = (
           <p id="message">Hi {JSON.parse(sessionStorage.getItem("credentials")).uid}</p>
         );
+        performanceDataIndex = (
+          <button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</button>
+        );
+        if (this.state.renderIndex) {
+          performanceDataIndex = (
+            <>
+              <DisplayPerformanceData 
+                updateIndex={this.state.updateIndex}
+                indexUpdated={() => this.setState({ updateIndex: false })}
+              />
+              <button onClick={() => this.setState({ renderIndex: false })}>Hide past entries</button>
+            </>
+          )
+        } else {
+          performanceDataIndex = (
+            <button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</button>
+          )
+        }
+      
         break;
+        
     }
 
     return (
+    
       <>
-        <InputFields onChangeHandler={this.onChangeHandler} />
+      <Grommet className="App">
+      <InputFields onChangeHandler={this.onChangeHandler} />
         {renderLogin}
         <DisplayCooperResult
           distance={this.state.distance}
@@ -55,8 +85,11 @@ class App extends Component {
           age={this.state.age}
           authenticated={this.state.authenticated}
           entrySaved={this.state.entrySaved}
-          entryHandler={() => this.setState({ entrySaved: true })}
+          entryHandler={() => this.setState({ entrySaved: true, updateIndex: true })}
         />
+        {performanceDataIndex}
+      </Grommet>
+        
       </>
     );
   }
