@@ -65,24 +65,7 @@ class App extends Component {
           </>
         );
         break;
-        // case !renderRegisterForm && !authenticated:
-        //   renderRegister = (
-        //     <>
-        //       <Grommet theme={grommet}>
-        //         <Box align="center" pad="medium">
-        //           <Button
-        //             label="Register"
-        //             id="register"
-        //             onClick={() => this.setState({ renderRegisterForm: true })}
-        //           />
-        //         </Box>
-        //         <Box align="center" pad="medium">
-        //           <p id="message">{message}</p>
-        //         </Box>
-        //       </Grommet>
-        //     </>
-        //   );
-        //   break;
+       
       case authenticated:
         renderLogin = (
           <p id="message">
