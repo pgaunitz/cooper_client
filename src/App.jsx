@@ -71,7 +71,7 @@ class App extends Component {
       case authenticated:
         renderLogin = (
           <Grommet theme={grommet}>
-            <Box align="center" pad="medium" id="message">
+            <Box align="center" pad="medium" id="message" background="dark-1" pad="medium">
               Hi {JSON.parse(sessionStorage.getItem("credentials")).uid} you have successfully logged in. 
             </Box>
           </Grommet>
