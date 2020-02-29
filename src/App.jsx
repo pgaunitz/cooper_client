@@ -52,11 +52,13 @@ class App extends Component {
                   id="login"
                   onClick={() => this.setState({ renderLoginForm: true })}
                 />
+              <Box align="center" pad="medium">
                 <Button
-                    label="Register"
-                    id="register"
-                    onClick={() => this.setState({ renderRegisterForm: true })}
-                  />
+                      label="Register"
+                      id="register"
+                      onClick={() => this.setState({ renderRegisterForm: true })}
+                />
+              </Box>
               </Box>
               <Box align="center" pad="medium">
                 <p id="message">{message}</p>
