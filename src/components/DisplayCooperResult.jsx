@@ -1,7 +1,7 @@
 import React from "react";
 import cooperCalculator from "../modules/cooperCalculator";
 import { saveData } from "../modules/performanceData";
-import { Box, Grommet } from "grommet";
+import { Box, Grommet, Button } from "grommet";
 import { grommet } from "grommet/themes";
 
 const DisplayCooperResult = ({ 
@@ -27,12 +27,11 @@ const DisplayCooperResult = ({
               </p>
               <p id="cooper-result">Result: {result}</p>
               {authenticated && !entrySaved ? (
-                <button
-                  id="save-result"
+                <Button
+                  id="save-result" label="Save entry"
                   onClick={() => saveData(result, entryHandler)}
                 >
-                  Save entry
-                </button>
+                </Button>
               ) : (
                 <p id="response-message">Your entry was saved</p>
               )}
