@@ -5,7 +5,7 @@ import LoginForm from "./components/LoginForm";
 import { authenticate } from "./modules/auth";
 import DisplayPerformanceData from "./components/DisplayPerformanceData";
 import { grommet, Grommet, Box, Button } from 'grommet';
-import LoginForm from "./components/RegisterForm";
+import RegisterForm from "./components/RegisterForm";
 import { register } from "./index/register";
 
 
