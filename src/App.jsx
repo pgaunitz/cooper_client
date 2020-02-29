@@ -79,7 +79,7 @@ class App extends Component {
         );
         performanceDataIndex = (
           <Grommet theme={grommet}>
-            <Button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</Button>
+            <Button label="Show past entries" id="show-index" onClick={() => this.setState({ renderIndex: true })}></Button>
           </Grommet>);
 
         if (this.state.renderIndex) {
@@ -91,7 +91,7 @@ class App extends Component {
               />
               <Grommet theme={grommet}>
                 <Box align="center">
-                  <Button onClick={() => this.setState({ renderIndex: false })}>Hide past entries</Button>
+                  <Button label= "Hide past entries" onClick={() => this.setState({ renderIndex: false })}></Button>
                 </Box>
               </Grommet>
             </>
@@ -100,7 +100,7 @@ class App extends Component {
           performanceDataIndex = (
             <Grommet theme={grommet}>
               <Box align="center">
-                <Button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</Button>
+                <Button label="Show past entries" id="show-index" onClick={() => this.setState({ renderIndex: true })}></Button>
               </Box>
           </Grommet>);
         }
