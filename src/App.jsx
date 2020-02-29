@@ -5,6 +5,8 @@ import LoginForm from "./components/LoginForm";
 import { authenticate } from "./modules/auth";
 import DisplayPerformanceData from "./components/DisplayPerformanceData";
 import { grommet, Grommet, Box, Button } from 'grommet';
+import LoginForm from "./components/RegisterForm";
+import { register } from "./index/register";
 
 
 class App extends Component {
@@ -79,6 +81,7 @@ class App extends Component {
       <Grommet className="App">
       <InputFields onChangeHandler={this.onChangeHandler} />
         {renderLogin}
+        {renderRegister}
         <DisplayCooperResult
           distance={this.state.distance}
           gender={this.state.gender}
@@ -103,6 +106,19 @@ class App extends Component {
       this.setState({ authenticated: true });
     } else {
       this.setState({ message: response.message, renderLoginForm: false });
+    }
+  };
+  onRegister = async e => {
+    e.preventDefault();
+    const response = await authenticate(
+      e.target.email.value,
+      e.target.password.value,
+      e.target.password_confirmation.value
+    );
+    if (response.registred) {
+      this.setState({ registred: true });
+    } else {
+      this.setState({ message: response.message, renderRegisterForm: false });
     }
   };
 }
