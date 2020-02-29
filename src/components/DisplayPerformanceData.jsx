@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { getData } from "../modules/performanceData";
+import { Box, Grommet } from "grommet";
+import { grommet } from "grommet/themes";
 
 class DisplayPerformanceData extends Component {
   state = {
@@ -37,9 +39,15 @@ class DisplayPerformanceData extends Component {
     }
 
     return (
-      <div id="index" >
-        {dataIndex}
-      </div>
+
+      <>
+      <Grommet theme={grommet}>
+        <Box id="index" align="center">
+          {dataIndex}
+        </Box>
+      </Grommet>
+      </>
+
     )
   }      
 }

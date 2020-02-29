@@ -1,6 +1,8 @@
 import React from "react";
 import cooperCalculator from "../modules/cooperCalculator";
 import { saveData } from "../modules/performanceData";
+import { Box, Grommet } from "grommet";
+import { grommet } from "grommet/themes";
 
 const DisplayCooperResult = ({ 
   distance, 
@@ -18,20 +20,24 @@ const DisplayCooperResult = ({
     <>
       {propsPassed && (
         <>
-          <p id="cooper-message">
-            {age} y/o {gender} running {distance} meters.
-          </p>
-          <p id="cooper-result">Result: {result}</p>
-          {authenticated && !entrySaved ? (
-            <button
-              id="save-result"
-              onClick={() => saveData(result, entryHandler)}
-            >
-              Save entry
-            </button>
-          ) : (
-            <p id="response-message">Your entry was saved</p>
-          )}
+          <Grommet full theme={grommet}>
+            <Box align="center">
+              <p id="cooper-message">
+                {age} y/o {gender} running {distance} meters.
+              </p>
+              <p id="cooper-result">Result: {result}</p>
+              {authenticated && !entrySaved ? (
+                <button
+                  id="save-result"
+                  onClick={() => saveData(result, entryHandler)}
+                >
+                  Save entry
+                </button>
+              ) : (
+                <p id="response-message">Your entry was saved</p>
+              )}
+            </Box>
+          </Grommet>
         </>
       )}
     </>
@@ -39,3 +45,4 @@ const DisplayCooperResult = ({
 };
 
 export default DisplayCooperResult;
+
