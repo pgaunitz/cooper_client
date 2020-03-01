@@ -34,16 +34,6 @@ class DisplayPerformanceData extends Component {
     return count;
   }
 
-  // getLabels(collection) {
-  //   let uniqueLabels = [];
-  //   collection.forEach(entry => {
-  //     if (entry.data.message && uniqueLabels.indexOf(entry.data.message) === -1 )
-  //       uniqueLabels.push(entry.data.message);
-  //     }
-  //   })
-  //   return uniqueLabels;
-  // }
-
   render() {
     let dataIndex;
 
@@ -85,9 +75,9 @@ class DisplayPerformanceData extends Component {
     return (
       <>
         <Grommet theme={grommet}>
-          {/* <Box id="index" align="center">
+          <Box id="index" align="center">
             {dataIndex}
-          </Box> */}
+          </Box>
           <Box id="graph" align="center">
             <Line data={dataForLineDiagram} />
           </Box>
