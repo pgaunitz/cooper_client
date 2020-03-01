@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getData } from "../modules/performanceData";
 import { Box, Grommet } from "grommet";
 import { grommet } from "grommet/themes";
+import { Line, Bar } from 'react-chartjs-2';
 
 class DisplayPerformanceData extends Component {
   state = {
@@ -25,6 +26,24 @@ class DisplayPerformanceData extends Component {
     })
   }
 
+  getCount(collection, value) {
+    let count = 0;
+    collection.forECH(entry => {
+      count += entry.data.message === value ? 1 : 0;
+    })
+    return count;
+  }
+
+  // getLabels(collection) {
+  //   let uniqueLabels = [];
+  //   collection.forEach(entry => {
+  //     if (entry.data.message && uniqueLabels.indexOf(entry.data.message) === -1 )
+  //       uniqueLabels.push(entry.data.message);
+  //     }
+  //   })
+  //   return uniqueLabels;
+  // }
+
   render () {
     let dataIndex;
 
@@ -32,10 +51,26 @@ class DisplayPerformanceData extends Component {
       dataIndex = (
         <div>
           {this.state.performanceData.map(item => {
-            return <div  key={item.id}>{item.data.message}</div>
+            return <div  key={item.id}>{item.data.message} {item.data.distance}</div>
           })}
         </div>
       )
+    }
+const distances = []
+const labels = []
+    if (this.state.performanceData != null) {
+      this.state.performanceData.forEach(entry => {
+        distances.push(entry.data.distance)
+        labels.push(entry.data.message)
+      })
+    }
+
+    let dataForBarDiagram = {
+      datasets: [{
+        data: distances,
+        label: "Historical Data (Meters)"
+      }],
+      labels: labels
     }
 
     return (
@@ -44,6 +79,9 @@ class DisplayPerformanceData extends Component {
       <Grommet theme={grommet}>
         <Box id="index" align="center">
           {dataIndex}
+        </Box>
+        <Box id="graph" align="center">
+          <Bar data={dataForBarDiagram}/>
         </Box>
       </Grommet>
       </>
